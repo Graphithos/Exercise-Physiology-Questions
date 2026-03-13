@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs on Physiology of Training Quiz</title>
+    <style>
+        :root {
+            --bg-color: #f5f7fa;
+            --container-bg: white;
+            --text-color: #333;
+            --border-color: #ddd;
+            --primary-color: #3498db;
+            --header-color: #2c3e50;
+            --secondary-text: #7f8c8d;
+            --progress-bg: #ecf0f1;
+            --question-bg: #f8f9fa;
+            --option-bg: #fff;
+            --option-hover: #f1f8ff;
+            --option-selected: #d1ecf1;
+            --correct-bg: #d4edda;
+            --correct-border: #28a745;
+            --incorrect-bg: #f8d7da;
+            --incorrect-border: #dc3545;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --button-disabled: #bdc3c7;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #ecf0f1;
+            --toggle-slider: white;
+            --toggle-text: #7f8c8d;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a2e;
+            --container-bg: #16213e;
+            --text-color: #e6e6e6;
+            --border-color: #394867;
+            --primary-color: #4cc9f0;
+            --header-color: #e6e6e6;
+            --secondary-text: #a9a9a9;
+            --progress-bg: #394867;
+            --question-bg: #1f4068;
+            --option-bg: #16213e;
+            --option-hover: #1f4068;
+            --option-selected: #1f4068;
+            --correct-bg: #2d5a2d;
+            --correct-border: #4caf50;
+            --incorrect-bg: #5a2d2d;
+            --incorrect-border: #f44336;
+            --button-bg: #4cc9f0;
+            --button-hover: #3aa8d0;
+            --button-disabled: #5d6d7e;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #394867;
+            --toggle-slider: #4cc9f0;
+            --toggle-text: #e6e6e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        h1 {
+            color: var(--header-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .author {
+            color: var(--secondary-text);
+            font-style: italic;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .description {
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 35px;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--toggle-text);
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 60px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--toggle-slider);
+            transition: .4s;
+            border-radius: 34px;
+            z-index: 1;
+        }
+        .slider-text {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .light-text, .dark-text {
+            transition: opacity 0.3s;
+        }
+        .dark-mode .light-text {
+            opacity: 0.5;
+        }
+        .light-text {
+            opacity: 0.5;
+        }
+        .dark-mode .dark-text {
+            opacity: 1;
+        }
+        .dark-text {
+            opacity: 0.5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(52px);
+        }
+        .progress-container {
+            background: var(--progress-bg);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            height: 10px;
+            transition: background-color 0.3s;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--header-color);
+            transition: color 0.3s;
+        }
+        .question {
+            background: var(--question-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .question-number {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            background: var(--option-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            background: var(--option-hover);
+            border-color: var(--primary-color);
+        }
+        .option.selected {
+            background: var(--option-selected);
+            border-color: var(--primary-color);
+        }
+        .option.correct {
+            background: var(--correct-bg);
+            border-color: var(--correct-border);
+        }
+        .option.incorrect {
+            background: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+        }
+        .feedback {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback.correct {
+            background: var(--correct-bg);
+            color: var(--text-color);
+            border: 1px solid var(--correct-border);
+            display: block;
+        }
+        .feedback.incorrect {
+            background: var(--incorrect-bg);
+            color: var(--text-color);
+            border: 1px solid var(--incorrect-border);
+            display: block;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: var(--button-hover);
+        }
+        button:disabled {
+            background: var(--button-disabled);
+            cursor: not-allowed;
+        }
+        .results {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        .score {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--header-color);
+        }
+        .score-value {
+            font-size: 48px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .restart-btn {
+            margin-top: 20px;
+            background: var(--restart-bg);
+        }
+        .restart-btn:hover {
+            background: var(--restart-hover);
+        }
+        .review-btn {
+            margin-top: 20px;
+            background: var(--review-bg);
+        }
+        .review-btn:hover {
+            background: var(--review-hover);
+        }
+        .review-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--question-bg);
+            border-radius: 8px;
+            display: none;
+        }
+        .review-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--header-color);
+            text-align: center;
+        }
+        .review-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid var(--incorrect-border);
+            background: var(--container-bg);
+            border-radius: 4px;
+        }
+        .review-question-number {
+            font-weight: bold;
+            color: var(--incorrect-border);
+            margin-bottom: 8px;
+        }
+        .review-question-text {
+            margin-bottom: 10px;
+        }
+        .review-answer {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .review-correct {
+            color: var(--correct-border);
+        }
+        .review-explanation {
+            margin-top: 5px;
+            font-style: italic;
+            color: var(--secondary-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MCQs on Physiology of Training Quiz</h1>
+            <p class="author">Dr. Samy Salem</p>
+            <p class="description">Test your knowledge of Physiology of Training: adaptations, principles, and responses to exercise</p>
+            <div class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider">
+                        <div class="slider-text">
+                            <span class="light-text">Light</span>
+                            <span class="dark-text">Dark</span>
+                        </div>
+                    </span>
+                </label>
+            </div>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="stats">
+            <div>Question: <span id="current-question">1</span>/<span id="total-questions">35</span></div>
+            <div>Score: <span id="score">0</span>/<span id="total-score">35</span></div>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div id="results" class="results">
+            <div class="score">Your Score: <span class="score-value" id="final-score">0</span>/35</div>
+            <p id="performance-message"></p>
+            <button class="restart-btn" id="restart-btn">Restart Quiz</button>
+            <button class="review-btn" id="review-btn">Review Incorrect Answers</button>
+        </div>
+
+        <div id="review-section" class="review-section">
+            <h2 class="review-title">Questions Answered Incorrectly</h2>
+            <div id="incorrect-questions-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data from Physiology of Training PDF (extracted from 4. Physiology of Training (MCQs).pdf)
+        const originalQuizData = [
+            {
+                question: "Regular endurance exercise increases the cardiovascular system's ability to deliver blood and increases the muscle's capacity to produce ATP through which pathway?",
+                options: [
+                    "Anaerobically",
+                    "Aerobically",
+                    "Via the ATP-PCr system only",
+                    "Via glycolysis only"
+                ],
+                answer: 1,
+                explanation: "Page 5"
+            },
+            {
+                question: "Muscular strength is commonly expressed as which measurement?",
+                options: [
+                    "The total work performed over time",
+                    "The one repetition maximum (1-RM)",
+                    "The number of repetitions at 50% max",
+                    "The maximal oxygen uptake"
+                ],
+                answer: 1,
+                explanation: "Page 7"
+            },
+            {
+                question: "The ability to make repeated contractions against a sub-maximal load defines:",
+                options: [
+                    "Muscular strength",
+                    "Muscular power",
+                    "Muscular endurance",
+                    "VO2 max"
+                ],
+                answer: 2,
+                explanation: "Page 7"
+            },
+            {
+                question: "An organ system must be exercised at a level beyond which it is accustomed to achieve a training adaptation. This describes which principle of training?",
+                options: [
+                    "Specificity",
+                    "Reversibility",
+                    "Overload",
+                    "Individuality"
+                ],
+                answer: 2,
+                explanation: "Page 10"
+            },
+            {
+                question: "The principle that fitness gains are quickly lost when training is stopped is known as:",
+                options: [
+                    "Reversibility",
+                    "Specificity",
+                    "Overload",
+                    "Adaptation"
+                ],
+                answer: 0,
+                explanation: "Page 11"
+            },
+            {
+                question: "If a muscle is engaged in heavy resistance training, the primary adaptation is:",
+                options: [
+                    "An increase in capillaries",
+                    "An increase in mitochondria volume",
+                    "An increase in the quantity of contractile proteins",
+                    "A fast-to-slow shift in fiber types"
+                ],
+                answer: 2,
+                explanation: "Page 14"
+            },
+            {
+                question: "VO2 max, also known as maximal aerobic power, is the measure of the maximal capacity of the body to:",
+                options: [
+                    "Generate force against a load",
+                    "Transport and use oxygen during dynamic exercise",
+                    "Produce ATP anaerobically",
+                    "Buffer lactic acid in the blood"
+                ],
+                answer: 1,
+                explanation: "Page 16"
+            },
+            {
+                question: "According to the Fick equation, VO2 max is the product of maximal cardiac output and:",
+                options: [
+                    "Maximal heart rate",
+                    "Maximal stroke volume",
+                    "Maximal a-v O2 difference",
+                    "Maximal ventilation"
+                ],
+                answer: 2,
+                explanation: "Page 16"
+            },
+            {
+                question: "Endurance training programs that increase VO2 max typically involve exercise at an intensity of what percentage of VO2 max?",
+                options: [
+                    "10% to 25%",
+                    "30% to 45%",
+                    "90% to 100%",
+                    "50% to 85%"
+                ],
+                answer: 3,
+                explanation: "Page 17"
+            },
+            {
+                question: "Genetic predisposition accounts for approximately what percentage of one's VO2 max value?",
+                options: [
+                    "10%",
+                    "25%",
+                    "50%",
+                    "80%"
+                ],
+                answer: 2,
+                explanation: "Page 18"
+            },
+            {
+                question: "The increase in the a-v O2 difference with endurance training is primarily due to an increase in which factor in the trained muscles?",
+                options: [
+                    "Mitochondrial size",
+                    "Capillary density",
+                    "Myosin ATPase activity",
+                    "Glycogen stores"
+                ],
+                answer: 1,
+                explanation: "Page 20"
+            },
+            {
+                question: "In healthy, sedentary subjects, the improvements in VO2 max following short-term training (≈4 months) are primarily due to increases in:",
+                options: [
+                    "a-v O2 difference alone",
+                    "Maximal cardiac output alone",
+                    "Both maximal cardiac output and a-v O2 difference",
+                    "Muscle hypertrophy"
+                ],
+                answer: 1,
+                explanation: "Page 21"
+            },
+            {
+                question: "Endurance training results in all of the following adaptations EXCEPT:",
+                options: [
+                    "A fast-to-slow shift in muscle fiber types",
+                    "An increase in the number of capillaries surrounding trained fibers",
+                    "An increase in the size of mitochondria",
+                    "A decrease in the capacity to transport free fatty acids"
+                ],
+                answer: 3,
+                explanation: "Page 25"
+            },
+            {
+                question: "The increase in fat oxidation in endurance-trained muscles helps to:",
+                options: [
+                    "Increase lactate production",
+                    "Deplete liver and muscle glycogen faster",
+                    "Spare liver and muscle glycogen and plasma glucose",
+                    "Decrease the number of mitochondria"
+                ],
+                answer: 2,
+                explanation: "Page 26"
+            },
+            {
+                question: "Endurance training increases endogenous antioxidants in trained muscles, which helps to:",
+                options: [
+                    "Increase muscle size",
+                    "Protect muscle fibers against damage and fatigue",
+                    "Decrease capillary density",
+                    "Increase blood pH disruption"
+                ],
+                answer: 1,
+                explanation: "Page 28"
+            },
+            {
+                question: "The reduction in feedback from chemoreceptors and a decreased need to recruit motor units results in which response to submaximal exercise?",
+                options: [
+                    "Reduced heart rate and ventilation",
+                    "Increased sympathetic nervous system activity",
+                    "Increased heart rate",
+                    "Increased ventilation"
+                ],
+                answer: 0,
+                explanation: "Page 29"
+            },
+            {
+                question: "Detraining following endurance training results in a decline in exercise performance primarily due to:",
+                options: [
+                    "A decrease in plasma volume only",
+                    "A decrease in the number of mitochondria in muscle fibers",
+                    "An increase in capillary density",
+                    "A fast-to-slow fiber type shift"
+                ],
+                answer: 1,
+                explanation: "Page 31"
+            },
+            {
+                question: "Within 12 days after cessation of training, VO2 max can decrease by approximately:",
+                options: [
+                    "2%",
+                    "8%",
+                    "20%",
+                    "50%"
+                ],
+                answer: 1,
+                explanation: "Page 32"
+            },
+            {
+                question: "In the first 12 days of detraining, the initial decrease in VO2 max is due entirely to a decrease in:",
+                options: [
+                    "Heart rate",
+                    "a-v O2 difference",
+                    "Stroke volume",
+                    "Muscle mitochondria"
+                ],
+                answer: 2,
+                explanation: "Page 34"
+            },
+            {
+                question: "The sudden decrease in maximal stroke volume in early detraining appears to be due to:",
+                options: [
+                    "A decrease in muscle mitochondria",
+                    "A decrease in capillary density",
+                    "A slow-to-fast fiber type shift",
+                    "A rapid loss of plasma volume"
+                ],
+                answer: 3,
+                explanation: "Page 34"
+            },
+            {
+                question: "In training studies of short duration (8 to 20 weeks), the most important factor playing a major role in the gain in strength is:",
+                options: [
+                    "An increase in muscle size",
+                    "An increase in muscle protein synthesis",
+                    "Neural adaptations",
+                    "Muscle hyperplasia"
+                ],
+                answer: 2,
+                explanation: "Page 38"
+            },
+            {
+                question: "During long-term resistance training programs, the factor playing the major role in strength development is:",
+                options: [
+                    "Neural adaptations",
+                    "An increase in muscle size",
+                    "Improved coordination",
+                    "Increased capillary density"
+                ],
+                answer: 1,
+                explanation: "Page 38"
+            },
+            {
+                question: "Current evidence suggests that most (90% to 95%) of the increase in muscle size following resistance training occurs due to:",
+                options: [
+                    "Hyperplasia",
+                    "Hypertrophy",
+                    "Increased capillary density",
+                    "Increased oxidative capacity"
+                ],
+                answer: 1,
+                explanation: "Page 40"
+            },
+            {
+                question: "A single bout of resistance exercise increases muscle protein synthesis by 50% to 150% within what time frame following exercise?",
+                options: [
+                    "1 to 4 hours",
+                    "12 to 24 hours",
+                    "30 to 48 hours",
+                    "72 to 96 hours"
+                ],
+                answer: 0,
+                explanation: "Page 41"
+            },
+            {
+                question: "The exercise-induced increase in protein synthesis remains elevated for a longer period in which individuals?",
+                options: [
+                    "Trained individuals",
+                    "Untrained individuals",
+                    "Older individuals",
+                    "Younger individuals"
+                ],
+                answer: 1,
+                explanation: "Page 42"
+            },
+            {
+                question: "The source of additional myonuclei in muscle fibers during resistance training hypertrophy is:",
+                options: [
+                    "Adjacent muscle fibers",
+                    "Satellite cells",
+                    "Fibroblasts",
+                    "Motor neurons"
+                ],
+                answer: 1,
+                explanation: "Page 44"
+            },
+            {
+                question: "The addition of myonuclei to muscle fibers is a requirement to achieve:",
+                options: [
+                    "Increased capillary density",
+                    "Maximal fiber hypertrophy",
+                    "A fast-to-slow fiber type shift",
+                    "Increased oxidative enzymes"
+                ],
+                answer: 1,
+                explanation: "Page 44"
+            },
+            {
+                question: "Compared to the rate of detraining following endurance exercise, the rate of detraining from resistance exercise is:",
+                options: [
+                    "Slower",
+                    "Faster",
+                    "About the same",
+                    "Unpredictable"
+                ],
+                answer: 0,
+                explanation: "Page 47"
+            },
+            {
+                question: "With reduced training frequency, maximal dynamic strength can be maintained for up to:",
+                options: [
+                    "1 week",
+                    "4 weeks",
+                    "8 weeks",
+                    "12 weeks"
+                ],
+                answer: 3,
+                explanation: "Page 47"
+            },
+            {
+                question: "Individuals who engage in concurrent resistance training and high-intensity endurance exercise training often report that it impairs:",
+                options: [
+                    "Endurance gains",
+                    "Strength gains",
+                    "Flexibility",
+                    "VO2 max"
+                ],
+                answer: 1,
+                explanation: "Page 51"
+            },
+            {
+                question: "One neural factor that may explain why concurrent training impairs strength gains is that it impairs:",
+                options: [
+                    "Muscle protein synthesis",
+                    "Motor unit recruitment",
+                    "Glycogen storage",
+                    "Capillary density"
+                ],
+                answer: 1,
+                explanation: "Page 52"
+            },
+            {
+                question: "Overtraining, which could impair strength gains in concurrent training, is defined as:",
+                options: [
+                    "An imbalance between training and recovery",
+                    "Training at too low an intensity",
+                    "Training only one muscle group",
+                    "A lack of specificity in training"
+                ],
+                answer: 0,
+                explanation: "Page 53"
+            },
+            {
+                question: "The increase in the a-v O2 difference with training allows for:",
+                options: [
+                    "Faster red blood cell transit time",
+                    "Slower red blood cell transit time through muscle",
+                    "Decreased oxygen diffusion",
+                    "Increased plasma volume loss"
+                ],
+                answer: 1,
+                explanation: "Page 20"
+            },
+            {
+                question: "After 30 weeks of detraining followed by six weeks of retraining, rapid muscular adaptations occur in which group?",
+                options: [
+                    "Previously trained individuals",
+                    "Previously untrained individuals",
+                    "Older individuals only",
+                    "Younger individuals only"
+                ],
+                answer: 0,
+                explanation: "Page 47"
+            },
+            {
+                question: "The increase in the enzymes of the fatty acid cycle in endurance-trained muscle increases the rate of formation of which molecule for oxidation in the Krebs cycle?",
+                options: [
+                    "Pyruvate",
+                    "Lactate",
+                    "Acetyl-CoA",
+                    "Glucose"
+                ],
+                answer: 2,
+                explanation: "Page 26"
+            }
+        ];
+
+        // Function to shuffle an array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Function to create a randomized version of the quiz data
+        function createRandomizedQuizData() {
+            const randomizedData = [];
+            
+            originalQuizData.forEach(question => {
+                // Create a copy of the original question
+                const randomizedQuestion = {
+                    question: question.question,
+                    options: [...question.options], // Copy options array
+                    originalAnswer: question.answer, // Store original answer index
+                    explanation: question.explanation
+                };
+                
+                // Create an array of indices [0, 1, 2, 3]
+                const indices = [0, 1, 2, 3];
+                
+                // Shuffle the indices
+                shuffleArray(indices);
+                
+                // Create a new options array with shuffled order
+                const shuffledOptions = indices.map(index => question.options[index]);
+                
+                // Find the new position of the correct answer
+                const newAnswerIndex = indices.indexOf(question.answer);
+                
+                // Update the question with shuffled options and new answer
+                randomizedQuestion.options = shuffledOptions;
+                randomizedQuestion.answer = newAnswerIndex;
+                
+                randomizedData.push(randomizedQuestion);
+            });
+            
+            return randomizedData;
+        }
+
+        // Create randomized quiz data
+        let quizData = createRandomizedQuizData();
+
+        // Quiz state variables
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let incorrectQuestions = [];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQuestionEl = document.getElementById('current-question');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const scoreEl = document.getElementById('score');
+        const totalScoreEl = document.getElementById('total-score');
+        const resultsContainer = document.getElementById('results');
+        const finalScoreEl = document.getElementById('final-score');
+        const performanceMessageEl = document.getElementById('performance-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        const reviewSection = document.getElementById('review-section');
+        const incorrectQuestionsList = document.getElementById('incorrect-questions-list');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const lightText = document.querySelector('.light-text');
+        const darkText = document.querySelector('.dark-text');
+
+        // Initialize quiz
+        function initQuiz() {
+            totalQuestionsEl.textContent = quizData.length;
+            totalScoreEl.textContent = quizData.length;
+            showQuestion();
+            updateProgressBar();
+            
+            // Initialize dark mode based on system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.checked = true;
+                updateToggleText(true);
+            } else {
+                updateToggleText(false);
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', showPreviousQuestion);
+            nextBtn.addEventListener('click', showNextQuestion);
+            restartBtn.addEventListener('click', restartQuiz);
+            reviewBtn.addEventListener('click', showIncorrectQuestions);
+            darkModeToggle.addEventListener('change', toggleDarkMode);
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            const isDarkMode = darkModeToggle.checked;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            updateToggleText(isDarkMode);
+        }
+
+        // Update toggle text opacity
+        function updateToggleText(isDarkMode) {
+            if (isDarkMode) {
+                lightText.style.opacity = '0.5';
+                darkText.style.opacity = '1';
+            } else {
+                lightText.style.opacity = '1';
+                darkText.style.opacity = '0.5';
+            }
+        }
+
+        // Show current question
+        function showQuestion() {
+            currentQuestionEl.textContent = currentQuestion + 1;
+            scoreEl.textContent = score;
+            
+            const question = quizData[currentQuestion];
+            let optionsHTML = '';
+            
+            question.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestion] === index) {
+                    optionClass += ' selected';
+                    if (index === question.answer) {
+                        optionClass += ' correct';
+                    } else {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                optionsHTML += `
+                    <div class="${optionClass}" data-index="${index}">
+                        ${String.fromCharCode(65 + index)}) ${option}
+                    </div>
+                `;
+            });
+            
+            let feedbackHTML = '';
+            if (userAnswers[currentQuestion] !== null) {
+                const isCorrect = userAnswers[currentQuestion] === question.answer;
+                const correctLetter = String.fromCharCode(65 + question.answer);
+                const correctAnswerText = question.options[question.answer];
+                
+                feedbackHTML = `
+                    <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+                        ${isCorrect ? '✓ Correct!' : '✗ Incorrect!'} 
+                        ${!isCorrect ? `Correct answer: ${correctLetter}) ${correctAnswerText}` : ''}
+                        <br><br>Explanation: ${question.explanation}
+                    </div>
+                `;
+            }
+            
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <div class="question-number">Question ${currentQuestion + 1}/${quizData.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">${optionsHTML}</div>
+                    ${feedbackHTML}
+                </div>
+            `;
+            
+            // Add event listeners to options
+            const optionElements = quizContainer.querySelectorAll('.option');
+            optionElements.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Finish Quiz' : 'Next';
+        }
+
+        // Select an option
+        function selectOption(e) {
+            if (userAnswers[currentQuestion] !== null) return; // Already answered
+            
+            const selectedOption = e.currentTarget;
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            
+            userAnswers[currentQuestion] = selectedIndex;
+            
+            // Check if answer is correct
+            if (selectedIndex === quizData[currentQuestion].answer) {
+                score++;
+                scoreEl.textContent = score;
+            } else {
+                // Add to incorrect questions list
+                incorrectQuestions.push({
+                    question: quizData[currentQuestion].question,
+                    userAnswer: selectedIndex,
+                    correctAnswer: quizData[currentQuestion].answer,
+                    options: quizData[currentQuestion].options,
+                    explanation: quizData[currentQuestion].explanation,
+                    questionNumber: currentQuestion + 1
+                });
+            }
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            document.querySelector('.navigation').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.querySelector('.stats').style.display = 'none';
+            
+            finalScoreEl.textContent = score;
+            
+            // Performance message
+            const percentage = (score / quizData.length) * 100;
+            let message = '';
+            if (percentage >= 80) {
+                message = 'Excellent! You have a strong understanding of Physiology of Training.';
+            } else if (percentage >= 60) {
+                message = 'Good job! You have a solid grasp of the material.';
+            } else if (percentage >= 40) {
+                message = 'Not bad! Review the material and try again.';
+            } else {
+                message = 'Keep studying! Review the lectures and try again.';
+            }
+            
+            performanceMessageEl.textContent = message;
+            resultsContainer.style.display = 'block';
+            
+            // Show review button only if there are incorrect answers
+            if (incorrectQuestions.length > 0) {
+                reviewBtn.style.display = 'inline-block';
+            } else {
+                reviewBtn.style.display = 'none';
+            }
+        }
+
+        // Show incorrect questions
+        function showIncorrectQuestions() {
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'block';
+            
+            let incorrectHTML = '';
+            incorrectQuestions.forEach((item, index) => {
+                const correctLetter = String.fromCharCode(65 + item.correctAnswer);
+                const userLetter = String.fromCharCode(65 + item.userAnswer);
+                
+                incorrectHTML += `
+                    <div class="review-question">
+                        <div class="review-question-number">Question ${item.questionNumber}</div>
+                        <div class="review-question-text">${item.question}</div>
+                        <div>Your answer: ${userLetter}) ${item.options[item.userAnswer]}</div>
+                        <div class="review-answer review-correct">Correct answer: ${correctLetter}) ${item.options[item.correctAnswer]}</div>
+                        <div class="review-explanation">${item.explanation}</div>
+                    </div>
+                `;
+            });
+            
+            incorrectQuestionsList.innerHTML = incorrectHTML;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            incorrectQuestions = [];
+            
+            // Re-randomize the quiz data when restarting
+            quizData = createRandomizedQuizData();
+            
+            quizContainer.style.display = 'block';
+            document.querySelector('.navigation').style.display = 'flex';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.querySelector('.stats').style.display = 'flex';
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'none';
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Initialize the quiz when the page loads
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>
